@@ -1,0 +1,195 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2479
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;\f2\fswiss\fcharset0 Helvetica;
+}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red31\green31\blue36;\red108\green121\blue134;
+\red252\green95\blue163;\red93\green216\blue255;\red208\green168\blue255;\red208\green168\blue255;\red65\green161\blue192;
+\red103\green183\blue164;\red103\green183\blue164;\red252\green106\blue93;\red161\green103\blue230;\red161\green103\blue230;
+\red146\green161\blue177;\red108\green121\blue134;\red108\green121\blue134;}
+{\*\expandedcolortbl;;\csgenericrgb\c100000\c100000\c100000\c85000;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c42394\c47462\c52518;
+\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c36295\c84643\c99897;\csgenericrgb\c81569\c65882\c100000;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c25490\c63137\c75294;
+\csgenericrgb\c40538\c71705\c64209;\csgenericrgb\c40392\c71765\c64314;\csgenericrgb\c98912\c41558\c36568;\csgenericrgb\c63137\c40392\c90196;\csgenericrgb\c63232\c40219\c90115;
+\csgenericrgb\c57255\c63137\c69412;\csgenericrgb\c42394\c47462\c52518\c45000;\csgenericrgb\c42394\c47462\c52518\c60000;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab593
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3     \cf4 //NSXMLParserDelegate needed for parsing the gpx files and NSObject is needed by NSXMLParserDelegate\cf2 \
+    
+\f1\b \cf5 class
+\f0\b0 \cf2  \cf6 TrackDrawer\cf2 : \cf7 NSObject\cf2 , \cf8 XMLParserDelegate\cf2  \{\
+        \cf4 //All filenames will be checked and if found and if it's a gpx file it will generate a polygon\cf2 \
+        
+\f1\b \cf5 var
+\f0\b0 \cf2  \cf9 fileNames\cf2 : [\cf8 String\cf2 ]! = [\cf8 String\cf2 ]()\
+        \
+        
+\f1\b \cf5 init
+\f0\b0 \cf2 (fileNames: [\cf8 String\cf2 ]) \{\
+            
+\f1\b \cf5 self
+\f0\b0 \cf2 .\cf10 fileNames\cf2  = fileNames\
+        \}\
+        \
+        \cf4 //Needs to be a global variable due to the parser function which can't return a value\cf2 \
+        
+\f1\b \cf5 private
+\f0\b0 \cf2  
+\f1\b \cf5 var
+\f0\b0 \cf2  \cf9 boundaries\cf2  = [\cf8 CLLocationCoordinate2D\cf2 ]()\
+        \
+        \cf4 //Create a polygon for each string there is in fileNames\cf2 \
+        
+\f1\b \cf5 func
+\f0\b0 \cf2  \cf9 getPolygons\cf2 () -> [\cf7 MKPolygon\cf2 ]? \{\
+            \cf4 //The list that will be returned\cf2 \
+            
+\f1\b \cf5 var
+\f0\b0 \cf2  polyList: [\cf7 MKPolygon\cf2 ] = [\cf7 MKPolygon\cf2 ]()\
+            \
+            
+\f1\b \cf5 for
+\f0\b0 \cf2  fileName 
+\f1\b \cf5 in
+\f0\b0 \cf2  \cf10 fileNames\cf2 ! \{\
+                \cf4 //Reset the list so it won't have the points from the previous polygon\cf2 \
+                \cf10 boundaries\cf2  = [\cf8 CLLocationCoordinate2D\cf2 ]()\
+                \
+                \cf4 //Convert the fileName to a computer readable filepath\cf2 \
+                
+\f1\b \cf5 let
+\f0\b0 \cf2  filePath = \cf11 getFilePath\cf2 (fileName: \cf12 "/Users/aneeshprabu/XCodeProjects/VITbusTracker/VITbusTracker/SupportingFiles/Route1.gpx "\cf2 )\
+                \
+                
+\f1\b \cf5 if
+\f0\b0 \cf2  filePath \cf13 ==\cf2  
+\f1\b \cf5 nil
+\f0\b0 \cf2  \{\
+                    \cf13 print\cf2  (\cf12 "File \\"\cf2 \\\cf12 (\cf2 fileName\cf12 ).gpx\\" does not exist in the project. Please make sure you imported the file and dont have any spelling errors"\cf2 )\
+                    
+\f1\b \cf5 continue
+\f0\b0 \cf2 \
+                \}\
+                \
+                \cf4 //Setup the parser and initialize it with the filepath's data\cf2 \
+                
+\f1\b \cf5 let
+\f0\b0 \cf2  data = \cf7 NSData\cf2 (contentsOfFile: filePath!)\
+                
+\f1\b \cf5 let
+\f0\b0 \cf2  parser = \cf7 XMLParser\cf2 (data: data! 
+\f1\b \cf5 as
+\f0\b0 \cf2  \cf8 Data\cf2 )\
+                parser.\cf14 delegate\cf2  = 
+\f1\b \cf5 self
+\f0\b0 \cf2 \
+                \
+                \cf4 //Parse the data, here the file will be read\cf2 \
+                
+\f1\b \cf5 let
+\f0\b0 \cf2  success = parser.\cf13 parse\cf2 ()\
+                \
+                \cf4 //Log an error if the parsing failed\cf2 \
+                
+\f1\b \cf5 if
+\f0\b0 \cf2  \cf13 !\cf2 success \{\
+                    \cf13 print\cf2  (\cf12 "Failed to parse the following file: \cf2 \\\cf12 (\cf2 fileName\cf12 ).gpx"\cf2 )\
+                \}\
+                \cf4 //Create the polygon with the points generated from the parsing process\cf2 \
+                polyList.\cf13 append\cf2 (\cf7 MKPolygon\cf2 (coordinates: &\cf10 boundaries\cf2 , count: \cf10 boundaries\cf2 .\cf14 count\cf2 ))\
+                \
+            \}\
+            
+\f1\b \cf5 return
+\f0\b0 \cf2  polyList\
+        \}\
+        \
+        
+\f1\b \cf5 func
+\f0\b0 \cf2  \cf9 getFilePath\cf2 (fileName: \cf8 String\cf2 ) -> \cf8 String\cf2 ? \{\
+            \cf4 //Generate a computer readable path\cf2 \
+            
+\f1\b \cf5 return
+\f0\b0 \cf2  \cf7 Bundle\cf2 .\cf14 main\cf2 .\cf13 path\cf2 (forResource: fileName, ofType: \cf12 "gpx"\cf2 )\
+        \}\
+        \
+        
+\f1\b \cf5 func
+\f0\b0 \cf2  \cf9 parser\cf2 (
+\f1\b \cf5 _
+\f0\b0 \cf2  parser: \cf7 XMLParser\cf2 , didStartElement elementName: \cf8 String\cf2 , namespaceURI: \cf8 String\cf2 ?, qualifiedName qName: \cf8 String\cf2 ?, attributes attributeDict: [\cf8 String\cf2  : \cf8 String\cf2 ]) \{\
+            \cf4 //Only check for the lines that have a <trkpt> or <wpt> tag. The other lines don't have coordinates and thus don't interest us\cf2 \
+            
+\f1\b \cf5 if
+\f0\b0 \cf2  elementName \cf13 ==\cf2  \cf12 "trkpt"\cf2  \cf13 ||\cf2  elementName \cf13 ==\cf2  \cf12 "wpt"\cf2  \{\
+                \cf4 //Create a World map coordinate from the file\cf2 \
+                
+\f1\b \cf5 let
+\f0\b0 \cf2  lat = attributeDict[\cf12 "lat"\cf2 ]!\
+                
+\f1\b \cf5 let
+\f0\b0 \cf2  lon = attributeDict[\cf12 "lon"\cf2 ]!\
+                \
+                \cf10 boundaries\cf2 .\cf13 append\cf2 (\cf13 CLLocationCoordinate2DMake\cf2 (\cf8 CLLocationDegrees\cf2 (lat)!, \cf8 CLLocationDegrees\cf2 (lon)!))\
+            \}\
+        \}\
+    \}\
+\
+\
+    \cf4 //MARK:
+\f1\b \cf15 \cb3  - Get stops function
+\f0\b0 \cf2 \cb3 \
+    \cf16 \cb3 /**\cf2 \cb3 \
+     
+\f2 \cf4 \cb3 Function to get data from firebase for the specific bus number then returns the stops and the lat long data as a Dictionary
+\f0 \cf2 \cb3 \
+     \cf17 \cb3 - 
+\f1\b \cf15 Returns
+\f0\b0 \cf17 :\cf2 \cb3 \
+     
+\f2 \cf4 \cb3 Dictionary 
+\f0 \cf17 [
+\f2 \cf4 String:CLLocation
+\f0 \cf17 ]\cf2 \cb3 \
+     \cf17 \cb3 - 
+\f1\b \cf15 Important
+\f0\b0 \cf17 :\cf2 \cb3 \
+     
+\f2 \cf4 \cb3 This code has not gone through QA
+\f0 \cf2 \cb3 \
+     \cf17 \cb3 - 
+\f1\b \cf15 Version
+\f0\b0 \cf17 :\cf2 \cb3 \
+     
+\f2 \cf4 \cb3 0.1
+\f0 \cf2 \cb3 \
+    \cf16 \cb3  */\cf2 \cb3 \
+\cf4 //\cf2 \
+\cf4 //    func getStops()\{\cf2 \
+\cf4 //\cf2 \
+\cf4 //        DispatchQueue.main.async \{\cf2 \
+\cf4 //            SVProgressHUD.show(withStatus: "Fetching...")\cf2 \
+\cf4 //        \}\cf2 \
+\cf4 //        var dict: [String: CLLocationCoordinate2D] = [:]\cf2 \
+\cf4 //\cf2 \
+\cf4 //        let db = Firestore.firestore()\cf2 \
+\cf4 //\cf2 \
+\cf4 //        db.collection("bus").document(selectedNumber).getDocument() \{ (querySnapshot, err) in\cf2 \
+\cf4 //            if let err = err \{\cf2 \
+\cf4 //                print("Error getting documents: \\(err)")\cf2 \
+\cf4 //            \} else \{\cf2 \
+\cf4 //                for document in querySnapshot!.data()! \{\cf2 \
+\cf4 //                    let key = document.key\cf2 \
+\cf4 //                    let point = document.value as! GeoPoint\cf2 \
+\cf4 //                    dict[key] = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)\cf2 \
+\cf4 //                \}\cf2 \
+\cf4 //                self.isFinishedLoading = true\cf2 \
+\cf4 //                self.dataDict = dict\cf2 \
+\cf4 //                print(self.dataDict)\cf2 \
+\cf4 //            \}\cf2 \
+\cf4 //        \}\cf2 \
+\cf4 //\cf2 \
+\cf4 //        annotationsDictionary = addAnnotations(dict: dataDict)\cf2 \
+\cf4 //    \}\cf2 \
+    \
+\
+}

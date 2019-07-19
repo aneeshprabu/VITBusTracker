@@ -3,27 +3,45 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0802DEA5F0D670B7C196A96F /* Pods_VITbusTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6C2CDE19E268CF1F267245 /* Pods_VITbusTracker.framework */; };
 		A7A42DD122E014F500E0A595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A42DD022E014F500E0A595 /* AppDelegate.swift */; };
-		A7A42DD322E014F500E0A595 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A42DD222E014F500E0A595 /* SceneDelegate.swift */; };
 		A7A42DD522E014F500E0A595 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A42DD422E014F500E0A595 /* ViewController.swift */; };
 		A7A42DD822E014F500E0A595 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7A42DD622E014F500E0A595 /* Main.storyboard */; };
 		A7A42DDA22E014FA00E0A595 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7A42DD922E014FA00E0A595 /* Assets.xcassets */; };
 		A7A42DDD22E014FA00E0A595 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7A42DDB22E014FA00E0A595 /* LaunchScreen.storyboard */; };
+		A7A42DE922E0179000E0A595 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A42DE822E0179000E0A595 /* LoginViewController.swift */; };
+		A7A42DEB22E02DAC00E0A595 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7A42DEA22E02DAC00E0A595 /* GoogleService-Info.plist */; };
+		A7A42DED22E02ED900E0A595 /* BusNumberSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A42DEC22E02ED900E0A595 /* BusNumberSelectViewController.swift */; };
+		A7A42DEF22E07BAF00E0A595 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A42DEE22E07BAF00E0A595 /* MapViewController.swift */; };
+		A7A42DF122E0841A00E0A595 /* Route1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A7A42DF022E0841900E0A595 /* Route1.gpx */; };
+		A7A42DF322E0858D00E0A595 /* Trash.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A7A42DF222E0858D00E0A595 /* Trash.rtf */; };
+		A7A42DF722E187D700E0A595 /* route.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A7A42DF622E187D600E0A595 /* route.gpx */; };
+		A7A42DF922E18ABF00E0A595 /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A7A42DF822E18ABF00E0A595 /* Location.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C6C2CDE19E268CF1F267245 /* Pods_VITbusTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VITbusTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E84C5A31FD887BCDD0DD648 /* Pods-VITbusTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VITbusTracker.debug.xcconfig"; path = "Target Support Files/Pods-VITbusTracker/Pods-VITbusTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		A7A42DCD22E014F500E0A595 /* VITbusTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VITbusTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7A42DD022E014F500E0A595 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A7A42DD222E014F500E0A595 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A7A42DD422E014F500E0A595 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A7A42DD722E014F500E0A595 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A7A42DD922E014FA00E0A595 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7A42DDC22E014FA00E0A595 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7A42DDE22E014FA00E0A595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7A42DE822E0179000E0A595 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A7A42DEA22E02DAC00E0A595 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A7A42DEC22E02ED900E0A595 /* BusNumberSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusNumberSelectViewController.swift; sourceTree = "<group>"; };
+		A7A42DEE22E07BAF00E0A595 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A7A42DF022E0841900E0A595 /* Route1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Route1.gpx; sourceTree = "<group>"; };
+		A7A42DF222E0858D00E0A595 /* Trash.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Trash.rtf; sourceTree = "<group>"; };
+		A7A42DF622E187D600E0A595 /* route.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = route.gpx; sourceTree = "<group>"; };
+		A7A42DF822E18ABF00E0A595 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		C82E627BB7E080B1571BC104 /* Pods-VITbusTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VITbusTracker.release.xcconfig"; path = "Target Support Files/Pods-VITbusTracker/Pods-VITbusTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0802DEA5F0D670B7C196A96F /* Pods_VITbusTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +61,8 @@
 			children = (
 				A7A42DCF22E014F500E0A595 /* VITbusTracker */,
 				A7A42DCE22E014F500E0A595 /* Products */,
+				EE3889CE1A9E1D06EB13353F /* Pods */,
+				C80E2150EA353B8D7D2B3505 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +78,70 @@
 			isa = PBXGroup;
 			children = (
 				A7A42DD022E014F500E0A595 /* AppDelegate.swift */,
-				A7A42DD222E014F500E0A595 /* SceneDelegate.swift */,
-				A7A42DD422E014F500E0A595 /* ViewController.swift */,
-				A7A42DD622E014F500E0A595 /* Main.storyboard */,
-				A7A42DD922E014FA00E0A595 /* Assets.xcassets */,
-				A7A42DDB22E014FA00E0A595 /* LaunchScreen.storyboard */,
+				A7A42DE422E0150B00E0A595 /* Model */,
+				A7A42DE522E0151000E0A595 /* View */,
+				A7A42DE622E0151400E0A595 /* Controller */,
+				A7A42DE722E0152E00E0A595 /* SupportingFiles */,
 				A7A42DDE22E014FA00E0A595 /* Info.plist */,
+				A7A42DEA22E02DAC00E0A595 /* GoogleService-Info.plist */,
 			);
 			path = VITbusTracker;
+			sourceTree = "<group>";
+		};
+		A7A42DE422E0150B00E0A595 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A7A42DE522E0151000E0A595 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7A42DD622E014F500E0A595 /* Main.storyboard */,
+				A7A42DDB22E014FA00E0A595 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7A42DE622E0151400E0A595 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A7A42DD422E014F500E0A595 /* ViewController.swift */,
+				A7A42DE822E0179000E0A595 /* LoginViewController.swift */,
+				A7A42DEC22E02ED900E0A595 /* BusNumberSelectViewController.swift */,
+				A7A42DEE22E07BAF00E0A595 /* MapViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A7A42DE722E0152E00E0A595 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A7A42DF022E0841900E0A595 /* Route1.gpx */,
+				A7A42DF822E18ABF00E0A595 /* Location.gpx */,
+				A7A42DF622E187D600E0A595 /* route.gpx */,
+				A7A42DD922E014FA00E0A595 /* Assets.xcassets */,
+				A7A42DF222E0858D00E0A595 /* Trash.rtf */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		C80E2150EA353B8D7D2B3505 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C6C2CDE19E268CF1F267245 /* Pods_VITbusTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE3889CE1A9E1D06EB13353F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E84C5A31FD887BCDD0DD648 /* Pods-VITbusTracker.debug.xcconfig */,
+				C82E627BB7E080B1571BC104 /* Pods-VITbusTracker.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +151,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7A42DE122E014FA00E0A595 /* Build configuration list for PBXNativeTarget "VITbusTracker" */;
 			buildPhases = (
+				F15EC85EC78A0B3FF6C88B2F /* [CP] Check Pods Manifest.lock */,
 				A7A42DC922E014F500E0A595 /* Sources */,
 				A7A42DCA22E014F500E0A595 /* Frameworks */,
 				A7A42DCB22E014F500E0A595 /* Resources */,
+				F2E8BD87A4D707CB15A202DC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,21 +205,70 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7A42DDD22E014FA00E0A595 /* LaunchScreen.storyboard in Resources */,
+				A7A42DEB22E02DAC00E0A595 /* GoogleService-Info.plist in Resources */,
+				A7A42DF922E18ABF00E0A595 /* Location.gpx in Resources */,
+				A7A42DF122E0841A00E0A595 /* Route1.gpx in Resources */,
+				A7A42DF322E0858D00E0A595 /* Trash.rtf in Resources */,
 				A7A42DDA22E014FA00E0A595 /* Assets.xcassets in Resources */,
 				A7A42DD822E014F500E0A595 /* Main.storyboard in Resources */,
+				A7A42DF722E187D700E0A595 /* route.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F15EC85EC78A0B3FF6C88B2F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VITbusTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2E8BD87A4D707CB15A202DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VITbusTracker/Pods-VITbusTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VITbusTracker/Pods-VITbusTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VITbusTracker/Pods-VITbusTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A7A42DC922E014F500E0A595 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7A42DED22E02ED900E0A595 /* BusNumberSelectViewController.swift in Sources */,
+				A7A42DE922E0179000E0A595 /* LoginViewController.swift in Sources */,
 				A7A42DD522E014F500E0A595 /* ViewController.swift in Sources */,
+				A7A42DEF22E07BAF00E0A595 /* MapViewController.swift in Sources */,
 				A7A42DD122E014F500E0A595 /* AppDelegate.swift in Sources */,
-				A7A42DD322E014F500E0A595 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,11 +410,13 @@
 		};
 		A7A42DE222E014FA00E0A595 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E84C5A31FD887BCDD0DD648 /* Pods-VITbusTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N29A2CP236;
 				INFOPLIST_FILE = VITbusTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,11 +430,13 @@
 		};
 		A7A42DE322E014FA00E0A595 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C82E627BB7E080B1571BC104 /* Pods-VITbusTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N29A2CP236;
 				INFOPLIST_FILE = VITbusTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

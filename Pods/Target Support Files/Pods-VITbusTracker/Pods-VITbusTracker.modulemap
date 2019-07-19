@@ -1,0 +1,6 @@
+framework module Pods_VITbusTracker {
+  umbrella header "Pods-VITbusTracker-umbrella.h"
+
+  export *
+  module * { export * }
+}

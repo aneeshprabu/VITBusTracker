@@ -1,0 +1,51 @@
+<metadata>
+    <name><![CDATA[Route from 2019-05-08 07:27]]></name>
+    <desc><![CDATA[]]></desc>
+</metadata>
+<trk>
+    <name><![CDATA[Route from 2019-05-08 07:27]]></name>
+    <desc><![CDATA[]]></desc>
+    <type><![CDATA[]]></type>
+    <extensions><topografix:color>3A73E2</topografix:color></extensions>
+</trk>
+<wpt lat="12.840951" lon="80.153432">
+    <time>2019-05-08T02:36:53.782Z</time>
+    <name><![CDATA[S8- VIT]]></name>
+    <extensions><topografix:color>0</topografix:color></extensions>
+</wpt>
+<wpt lat="12.879208" lon="80.080579">
+    <time>2019-05-08T02:24:44.144Z</time>
+    <name><![CDATA[S7-V Zoo]]></name>
+    <extensions><topografix:color>0</topografix:color></extensions>
+</wpt>
+<wpt lat="12.905793" lon="80.095962">
+    <time>2019-05-08T02:19:19.727Z</time>
+    <name><![CDATA[S6-Perungalathur]]></name>
+    <extensions><topografix:color>0</topografix:color></extensions>
+</wpt>
+<wpt lat="12.925442" lon="80.116945">
+    <time>2019-05-08T02:12:04.208Z</time>
+    <name><![CDATA[S5-Tambaram]]></name>
+    <extensions><topografix:color>0</topografix:color></extensions>
+</wpt>
+<wpt lat="12.937785" lon="80.128353">
+    <time>2019-05-08T02:06:10.697Z</time>
+    <name><![CDATA[S4-TBM Sanatorium]]></name>
+    <extensions><topografix:color>0</topografix:color></extensions>
+</wpt>
+<wpt lat="12.947468" lon="80.137275">
+    <time>2019-05-08T02:03:08.736Z</time>
+    <name><![CDATA[S3-CHROMPET MIT bridge]]></name>
+    <extensions><topografix:color>0</topografix:color></extensions>
+</wpt>
+<wpt lat="12.95252" lon="80.141133">
+    <time>2019-05-08T01:59:49.632Z</time>
+    <name><![CDATA[S3-Chrompet Rly Station]]></name>
+    <extensions><topografix:color>0</topografix:color></extensions>
+</wpt>
+<wpt lat="12.956218" lon="80.143725">
+    <time>2019-05-08T01:58:21.196Z</time>
+    <name><![CDATA[S1-Saravana stores]]></name>
+    <extensions><topografix:color>0</topografix:color></extensions>
+</wpt>
+</gpx>
