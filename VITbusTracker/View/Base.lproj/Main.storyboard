@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <scenes>
         <!--Homepage-->
@@ -227,7 +228,10 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="selectButtonTapped:" destination="gj4-TM-GO5" eventType="touchUpInside" id="UAO-9b-hHE"/>
-                                    <segue destination="60g-GM-Er2" kind="show" identifier="goToMapView" id="FOV-mY-jmb"/>
+                                    <segue destination="60g-GM-Er2" kind="show" identifier="goToMapView" id="FOV-mY-jmb">
+                                        <segue key="commit" inheritsFrom="parent" id="s0G-C6-7v4"/>
+                                        <segue key="preview" inheritsFrom="commit" id="vru-t3-kEN"/>
+                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
@@ -266,20 +270,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yUw-2Z-8f8">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncF-ST-BJT">
+                                <rect key="frame" x="0.0" y="88" width="213" height="57"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fv7-zq-SO2">
+                                        <rect key="frame" x="77" y="18" width="64" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="systemBlueColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c5h-p9-8R5">
+                                        <rect key="frame" x="20" y="13" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="switchTapped:" destination="60g-GM-Er2" eventType="valueChanged" id="wlh-qX-ADR"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fv7-zq-SO2" firstAttribute="leading" secondItem="c5h-p9-8R5" secondAttribute="trailing" constant="8" id="1lF-66-VcW"/>
+                                    <constraint firstAttribute="trailing" secondItem="fv7-zq-SO2" secondAttribute="trailing" constant="72" id="9Bx-Wa-jhw"/>
+                                    <constraint firstItem="fv7-zq-SO2" firstAttribute="top" secondItem="ncF-ST-BJT" secondAttribute="top" constant="18" id="N5M-Ph-Aoj"/>
+                                    <constraint firstItem="c5h-p9-8R5" firstAttribute="top" secondItem="ncF-ST-BJT" secondAttribute="top" constant="13" id="S5K-Uh-gOt"/>
+                                    <constraint firstItem="c5h-p9-8R5" firstAttribute="leading" secondItem="ncF-ST-BJT" secondAttribute="leading" constant="20" id="aez-yN-RaQ"/>
+                                    <constraint firstItem="fv7-zq-SO2" firstAttribute="leading" secondItem="c5h-p9-8R5" secondAttribute="trailing" constant="8" id="apK-6G-7ng"/>
+                                    <constraint firstAttribute="bottom" secondItem="c5h-p9-8R5" secondAttribute="bottom" constant="13" id="rDA-EQ-cGx"/>
+                                    <constraint firstAttribute="bottom" secondItem="fv7-zq-SO2" secondAttribute="bottom" constant="18" id="wAY-di-j4W"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="yUw-2Z-8f8" firstAttribute="trailing" secondItem="gn5-OR-NNY" secondAttribute="trailing" id="IdX-7k-WG0"/>
-                            <constraint firstItem="yUw-2Z-8f8" firstAttribute="leading" secondItem="gn5-OR-NNY" secondAttribute="leading" id="TOX-4c-MGv"/>
-                            <constraint firstItem="yUw-2Z-8f8" firstAttribute="top" secondItem="gn5-OR-NNY" secondAttribute="top" id="k56-FW-3fg"/>
-                            <constraint firstAttribute="bottom" secondItem="yUw-2Z-8f8" secondAttribute="bottom" id="wdw-Ad-nPb"/>
+                            <constraint firstItem="ncF-ST-BJT" firstAttribute="top" secondItem="gn5-OR-NNY" secondAttribute="top" id="8nc-05-zZo"/>
+                            <constraint firstItem="yUw-2Z-8f8" firstAttribute="leading" secondItem="gn5-OR-NNY" secondAttribute="leading" id="9ac-SW-VB1"/>
+                            <constraint firstItem="ncF-ST-BJT" firstAttribute="leading" secondItem="gn5-OR-NNY" secondAttribute="leading" id="cpA-7p-mGJ"/>
+                            <constraint firstItem="yUw-2Z-8f8" firstAttribute="trailing" secondItem="gn5-OR-NNY" secondAttribute="trailing" id="d6M-8p-Av2"/>
+                            <constraint firstItem="gn5-OR-NNY" firstAttribute="bottom" secondItem="ncF-ST-BJT" secondAttribute="bottom" constant="717" id="dVM-VV-78w"/>
+                            <constraint firstAttribute="bottom" secondItem="yUw-2Z-8f8" secondAttribute="bottom" id="j6r-Ma-H4J"/>
+                            <constraint firstItem="yUw-2Z-8f8" firstAttribute="top" secondItem="JQ3-6B-gLJ" secondAttribute="top" id="qXM-jN-RZP"/>
+                            <constraint firstItem="gn5-OR-NNY" firstAttribute="trailing" secondItem="ncF-ST-BJT" secondAttribute="trailing" constant="201" id="usm-5L-rHI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gn5-OR-NNY"/>
                     </view>
                     <connections>
+                        <outlet property="mapSwitch" destination="c5h-p9-8R5" id="KJV-1q-g89"/>
                         <outlet property="mapView" destination="yUw-2Z-8f8" id="eHS-5g-7KX"/>
+                        <outlet property="satelliteLabel" destination="fv7-zq-SO2" id="usr-DK-oEA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TyT-0H-OAm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -308,4 +347,7 @@
     <resources>
         <image name="Logo" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FOV-mY-jmb"/>
+    </inferredMetricsTieBreakers>
 </document>

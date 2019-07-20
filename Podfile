@@ -6,12 +6,9 @@ target 'VITbusTracker' do
   use_frameworks!
 
   # Pods for VITbusTracker
-pod 'Firebase/Core'
 pod 'SVProgressHUD'
 pod 'Firebase'
 pod 'FirebaseDatabase'
-pod 'Firebase/Firestore'
-pod 'CoreGPX'
-pod 'TrackKit', '~> 2.4'
-pod 'SwiftyJSON'
+pod 'Firebase/Firestore', :inhibit_warnings => true
+pod 'Protobuf', :inhibit_warnings => true
 end

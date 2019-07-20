@@ -8,48 +8,68 @@
 
 import UIKit
 import MapKit
-import Firebase
-import CoreGPX
-import TrackKit
-import SwiftyJSON
-import SVProgressHUD
 
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, UINavigationControllerDelegate {
     
     //MARK: - Initialize variables here
-    var annotationsDictionary = [String:Any]()
+    
+    @IBOutlet var mapSwitch: UISwitch!
+    @IBOutlet var satelliteLabel: UILabel!
+    
+    var zoomingIn = false
+    var zoomingAnnotation:MKAnnotation?
+    
     var dataDict = [String:CLLocationCoordinate2D]()
-    var data = [String:Any]()
+    //var data = [String:[String:CLLocationCoordinate2D]]()
+    var allAnnotations = [MKAnnotation]()
     var selectedNumber: String = ""
-    var isFinishedLoading: Bool = false {
-        didSet {
-            if isFinishedLoading == true {
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                }
-            }
-        }
-    }
+    var locations = [CLLocationCoordinate2D]()
     
     @IBOutlet var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.delegate = self
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        
+        addAnnotations(dataDict: dataDict, selectedNum: selectedNumber)
+        
 
-        print(data)
-        
-        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-       
+    deinit {
+        print("Annotations before deinit\(mapView.annotations.count)")
+        mapView.removeAnnotations(mapView.annotations)
     }
+    
+    
+    
+    //MARK: - Switch on Map Function
+    
+    @IBAction func switchTapped(_ sender: UISwitch) {
+        if sender.isOn {
+            mapView.mapType = .satellite
+            satelliteLabel.text = "Satellite"
+            satelliteLabel.textColor = .green
+        } else {
+            mapView.mapType = .standard
+            satelliteLabel.text = "Default"
+            satelliteLabel.textColor = .systemBlue
+        }
+    }
+    
+    
     
     
     //MARK: - Add Anotations to the map
     /**
-     Function to add markers to the map using the dictionary property of this class
+     Function to add markers to the map using the dictionary member of this class
      - Returns:
      
      - Important:
@@ -58,36 +78,74 @@ class MapViewController: UIViewController, MKMapViewDelegate {
      0.1
      */
     
-    func addAnnotations(dict: Dictionary<String, CLLocationCoordinate2D>) -> Dictionary<String, Any>{
-        
-        for(key,value) in dataDict {
-            annotationsDictionary["title"] = key
-            annotationsDictionary["latitude"] = value.latitude
-            annotationsDictionary["longitude"] = value.longitude
-        }
-        return annotationsDictionary
+    func addAnnotations(dataDict: [String:CLLocationCoordinate2D] , selectedNum: String) {
 
+        for _key in dataDict {
+            let annotations = MKPointAnnotation()
+            
+            if let location:CLLocationCoordinate2D = dataDict[_key.key] {
+                annotations.title = _key.key
+                annotations.coordinate = location
+                mapView.addAnnotation(annotations)
+                allAnnotations.append(annotations)
+                locations.append(location)
+            }
+            
+            
+        }
+        
+        drawRoute()
+        
     }
     
-    
-    //MARK: - Trackkit Functions
+    //MARK: - Route Function
     /**
-     Function to parse through GPX file
+     Function to draw the route from an array of location points
      - parameters:
-        -   path: Path of the URL (String). Can not be empty.
+     
      - Returns:
-        Contains the Data after parsing the GPX file (File)
+     
      */
     
-    func gpxParse(path: String) -> TrackParser {
+    func drawRoute() {
+        zoomToRegion()
         
-        let content: String = path
-        let data = content.data(using: .utf8)
-    
-        let file = try! TrackParser(data: data, type: .gpx)
-        return file
+        let sortedKeys = Array(dataDict.keys).sorted()
+        print(sortedKeys)
+        
+
+        var arrData = Array<(key: String, value: CLLocationCoordinate2D)>()
+        for _key in sortedKeys {
+            arrData.append((_key, dataDict[_key]!))
+        }
+        
+        for index in 0..<arrData.count - 1 {
+            let sourcePlaceMark = MKPlacemark(coordinate: arrData[index].value)
+            let destinationPlaceMark = MKPlacemark(coordinate: arrData[index+1].value)
+            
+            let directionRequest = MKDirections.Request()
+            directionRequest.source = MKMapItem(placemark: sourcePlaceMark)
+            directionRequest.destination = MKMapItem(placemark: destinationPlaceMark)
+            directionRequest.transportType = .walking
+            let directions = MKDirections(request: directionRequest)
+            
+            directions.calculate { (response, error) in
+                guard let directionResonse = response else {
+                    if let error = error {
+                        print("we have error getting directions==\(error.localizedDescription)")
+                    }
+                    return
+                }
+                
+                //get route and assign to our route variable
+                let route = directionResonse.routes[0]
+                
+                //add rout to our mapview
+                self.mapView.addOverlay(route.polyline, level: .aboveRoads)
+                
+            }
+        }
     }
-    
 
     
     
@@ -103,15 +161,32 @@ class MapViewController: UIViewController, MKMapViewDelegate {
      0.1
      */
     
-    func zoomToRegion(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+    func zoomToRegion() {
         
+        mapView.region = MKCoordinateRegion(center: locations[0], span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
         
-        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    //MARK: - Mapkit delegate functions
+
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: 5000.0, longitudinalMeters: 7000.0)
+        // get the particular pin that was tapped
+        let pinToZoomOn = view.annotation
+
+        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         
+        // now move the map
+        let region = MKCoordinateRegion(center: pinToZoomOn!.coordinate, span: span)
         mapView.setRegion(region, animated: true)
-        
+    }
+    
+    //MARK:- MapKit delegates
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.blue
+        renderer.lineWidth = 4.0
+        return renderer
     }
 
 }
