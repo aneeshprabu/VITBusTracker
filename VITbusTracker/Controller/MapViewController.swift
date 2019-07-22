@@ -70,7 +70,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UINavigationContro
     //MARK: - Add Anotations to the map
     /**
      Function to add markers to the map using the dictionary member of this class
-     - Returns:
+     - Parameters:
+     - [String: CLLocationCoordinate2D]
+     - selected Bus number
      
      - Important:
      This code has not gone through QA
@@ -122,12 +124,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, UINavigationContro
         for index in 0..<arrData.count - 1 {
             let sourcePlaceMark = MKPlacemark(coordinate: arrData[index].value)
             let destinationPlaceMark = MKPlacemark(coordinate: arrData[index+1].value)
+            print("\(sourcePlaceMark) --> \(destinationPlaceMark)\n")
             
             let directionRequest = MKDirections.Request()
             directionRequest.source = MKMapItem(placemark: sourcePlaceMark)
             directionRequest.destination = MKMapItem(placemark: destinationPlaceMark)
-            directionRequest.transportType = .walking
+            directionRequest.transportType = .automobile
             let directions = MKDirections(request: directionRequest)
+            print(directions)
             
             directions.calculate { (response, error) in
                 guard let directionResonse = response else {
@@ -141,7 +145,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UINavigationContro
                 let route = directionResonse.routes[0]
                 
                 //add rout to our mapview
-                self.mapView.addOverlay(route.polyline, level: .aboveRoads)
+                self.mapView.addOverlay(route.polyline, level: .aboveLabels)
                 
             }
         }
@@ -181,7 +185,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UINavigationContro
         mapView.setRegion(region, animated: true)
     }
     
-    //MARK:- MapKit delegates
+
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = UIColor.blue
