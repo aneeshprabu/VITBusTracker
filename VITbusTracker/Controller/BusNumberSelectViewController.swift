@@ -20,18 +20,34 @@ class BusNumberSelectViewController: UIViewController, UIPickerViewDataSource, U
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var busNumberPickerView: UIPickerView!
     @IBOutlet weak var selectBtn: UIButton!
+    @IBOutlet var loader: UIActivityIndicatorView!
     
     private var data = [String:[String:CLLocationCoordinate2D]]()
     private var busNumbers = ["Select bus number"]
     private var pickedBusNumber:String = "0"
     private var test = [String:[String:Any]]()
     
+    private var userName: String = "Aneesh"
 
     
     //MARK: - View did load
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        busNumberPickerView.alpha = 0
+        loader.startAnimating()
+        loader.alpha = 1
+        
+        textLabel.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -50).isActive = true
+        textLabel.numberOfLines = 0
+        textLabel.text = "VIT \n Bus Tracker"
+        textLabel.font = UIFont(name: "Futura", size: 40)
+        textLabel.alpha = 0
+        textLabel.transform = CGAffineTransform(translationX: 0, y: -200)
         
         selectBtn.isEnabled = false
         busNumberPickerView.delegate = self
@@ -40,12 +56,12 @@ class BusNumberSelectViewController: UIViewController, UIPickerViewDataSource, U
         busNumberPickerView.reloadAllComponents()
         
     }
+
  
     
     override func viewWillAppear(_ animated: Bool) {
 
 
-            textLabel.text = "Establishing connection..."
             selectBtn.isHidden = true
             loadPickerData()
     }
@@ -74,12 +90,14 @@ class BusNumberSelectViewController: UIViewController, UIPickerViewDataSource, U
        
         if row != 0 {
             selectBtn.isEnabled = true
+            self.selectBtn.isHidden = false
             pickedBusNumber = busNumbers[row]
-            selectBtn.isHidden = false
+            selectBtn.alpha = 1
         }
         else {
             selectBtn.isEnabled = false
-            selectBtn.isHidden = true
+            self.selectBtn.isHidden = true
+            selectBtn.alpha = 0.5
         }
         
     }
@@ -120,7 +138,18 @@ class BusNumberSelectViewController: UIViewController, UIPickerViewDataSource, U
             
             DispatchQueue.main.async {
                 
-                self.textLabel.text = "Select bus number"
+                self.busNumberPickerView.alpha = 1
+                self.loader.alpha = 0
+                self.loader.stopAnimating()
+                self.loader.hidesWhenStopped = true
+                
+                
+                UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
+
+                    self.textLabel.alpha = 1
+                    self.textLabel.transform = CGAffineTransform(translationX: 0, y: 0)
+                })
+                
                 
             }
             
@@ -131,7 +160,11 @@ class BusNumberSelectViewController: UIViewController, UIPickerViewDataSource, U
     //MARK: - Button Functions
     
     @IBAction func selectButtonTapped(_ sender: UIButton) {
-
+        busNumberPickerView.alpha = 0
+        loader.startAnimating()
+        loader.alpha = 1
+        textLabel.alpha = 0
+        textLabel.transform = CGAffineTransform(translationX: 0, y: -200)
     }
     
     //MARK: - Prepare for segue

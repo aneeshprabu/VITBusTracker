@@ -73,7 +73,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Homepage" id="fg4-hc-fXO"/>
+                    <navigationItem key="navigationItem" id="fg4-hc-fXO"/>
                     <connections>
                         <outlet property="loginBtn" destination="5TV-3z-6vk" id="E2Q-on-7PL"/>
                         <outlet property="logoImageView" destination="uo7-xX-XJ2" id="KmG-tE-TWv"/>
@@ -160,7 +160,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" placeholder="Registration Number" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Khk-Zo-XPA">
-                                <rect key="frame" x="20" y="154" width="374" height="55"/>
+                                <rect key="frame" x="20" y="110" width="374" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="OZB-QA-hyU"/>
@@ -170,7 +170,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Pgf-j8-zDc">
-                                <rect key="frame" x="20" y="243" width="374" height="55"/>
+                                <rect key="frame" x="20" y="199" width="374" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="haa-MV-JXR"/>
@@ -179,7 +179,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykH-xe-632">
-                                <rect key="frame" x="20" y="380" width="374" height="72"/>
+                                <rect key="frame" x="20" y="336" width="374" height="82"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Login">
@@ -227,18 +227,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select bus number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dob-il-3j6">
-                                <rect key="frame" x="20" y="204" width="374" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select bus number" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dob-il-3j6">
+                                <rect key="frame" x="20" y="204" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDW-Gj-7Di">
-                                <rect key="frame" x="0.0" y="293" width="414" height="216"/>
+                                <rect key="frame" x="0.0" y="281" width="414" height="228"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl9-J3-8Cr">
-                                <rect key="frame" x="29" y="603" width="358" height="48"/>
+                                <rect key="frame" x="20" y="675" width="374" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="k3S-DD-2zv"/>
+                                    <constraint firstAttribute="width" secondItem="Cl9-J3-8Cr" secondAttribute="height" multiplier="187:24" id="oXz-wm-Tvj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Select">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -256,19 +260,27 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2KN-eK-H6Q">
+                                <rect key="frame" x="189" y="383" width="37" height="37"/>
+                                <color key="color" cocoaTouchSystemColor="systemBlueColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="FOG-J5-vOQ" firstAttribute="bottom" secondItem="Cl9-J3-8Cr" secondAttribute="bottom" constant="211" id="0r4-VM-Obd"/>
-                            <constraint firstItem="FOG-J5-vOQ" firstAttribute="trailing" secondItem="Cl9-J3-8Cr" secondAttribute="trailing" constant="27" id="5LE-Ms-J16"/>
+                            <constraint firstItem="FOG-J5-vOQ" firstAttribute="bottom" secondItem="Cl9-J3-8Cr" secondAttribute="bottom" constant="139" id="0bI-bl-hjS"/>
+                            <constraint firstItem="2KN-eK-H6Q" firstAttribute="top" secondItem="vlU-J9-rmJ" secondAttribute="topMargin" constant="295" id="ATg-gg-qAm"/>
+                            <constraint firstItem="Cl9-J3-8Cr" firstAttribute="leading" secondItem="FOG-J5-vOQ" secondAttribute="leading" constant="20" id="EW2-3i-AUV"/>
                             <constraint firstItem="Dob-il-3j6" firstAttribute="top" secondItem="FOG-J5-vOQ" secondAttribute="top" constant="116" id="IcP-3M-Bgw"/>
                             <constraint firstItem="FOG-J5-vOQ" firstAttribute="trailing" secondItem="Dob-il-3j6" secondAttribute="trailing" constant="20" id="JeD-rO-N1N"/>
-                            <constraint firstItem="Cl9-J3-8Cr" firstAttribute="leading" secondItem="FOG-J5-vOQ" secondAttribute="leading" constant="29" id="Kbd-k0-nOq"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="2KN-eK-H6Q" secondAttribute="bottom" constant="442" id="Jro-OW-lv2"/>
                             <constraint firstItem="lDW-Gj-7Di" firstAttribute="top" secondItem="Dob-il-3j6" secondAttribute="bottom" constant="53" id="R10-CI-KFl"/>
                             <constraint firstItem="lDW-Gj-7Di" firstAttribute="leading" secondItem="FOG-J5-vOQ" secondAttribute="leading" id="T5Q-g1-Von"/>
-                            <constraint firstItem="Cl9-J3-8Cr" firstAttribute="top" secondItem="lDW-Gj-7Di" secondAttribute="bottom" constant="94" id="XNK-N2-Q0A"/>
+                            <constraint firstItem="FOG-J5-vOQ" firstAttribute="trailing" secondItem="Cl9-J3-8Cr" secondAttribute="trailing" constant="20" id="YZ2-TX-8Cs"/>
                             <constraint firstItem="lDW-Gj-7Di" firstAttribute="trailing" secondItem="FOG-J5-vOQ" secondAttribute="trailing" id="cKA-0S-qUM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2KN-eK-H6Q" secondAttribute="trailing" constant="168" id="i7i-G6-0AA"/>
                             <constraint firstItem="Dob-il-3j6" firstAttribute="leading" secondItem="FOG-J5-vOQ" secondAttribute="leading" constant="20" id="ijj-e5-WJ5"/>
+                            <constraint firstItem="2KN-eK-H6Q" firstAttribute="leading" secondItem="vlU-J9-rmJ" secondAttribute="leadingMargin" constant="169" id="nTM-Oc-nfR"/>
+                            <constraint firstItem="Cl9-J3-8Cr" firstAttribute="top" secondItem="lDW-Gj-7Di" secondAttribute="bottom" constant="166" id="obe-Dv-Cz7"/>
                             <constraint firstItem="lDW-Gj-7Di" firstAttribute="top" secondItem="Dob-il-3j6" secondAttribute="bottom" constant="53" id="pLT-1G-2vs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FOG-J5-vOQ"/>
@@ -276,6 +288,7 @@
                     <navigationItem key="navigationItem" id="EJ9-ol-Ko5"/>
                     <connections>
                         <outlet property="busNumberPickerView" destination="lDW-Gj-7Di" id="evo-Lr-PL3"/>
+                        <outlet property="loader" destination="2KN-eK-H6Q" id="MLm-72-trw"/>
                         <outlet property="selectBtn" destination="Cl9-J3-8Cr" id="ddr-aa-wDw"/>
                         <outlet property="textLabel" destination="Dob-il-3j6" id="IAK-ey-GtB"/>
                     </connections>
