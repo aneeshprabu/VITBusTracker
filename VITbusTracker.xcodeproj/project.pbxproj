@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0802DEA5F0D670B7C196A96F /* Pods_VITbusTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6C2CDE19E268CF1F267245 /* Pods_VITbusTracker.framework */; };
+		A74C4D7F22E5FFC200119CB2 /* WelcomeUserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74C4D7E22E5FFC200119CB2 /* WelcomeUserLoginViewController.swift */; };
 		A7A42DD122E014F500E0A595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A42DD022E014F500E0A595 /* AppDelegate.swift */; };
 		A7A42DD522E014F500E0A595 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A42DD422E014F500E0A595 /* ViewController.swift */; };
 		A7A42DD822E014F500E0A595 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7A42DD622E014F500E0A595 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		4C6C2CDE19E268CF1F267245 /* Pods_VITbusTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VITbusTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E84C5A31FD887BCDD0DD648 /* Pods-VITbusTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VITbusTracker.debug.xcconfig"; path = "Target Support Files/Pods-VITbusTracker/Pods-VITbusTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		A74C4D7E22E5FFC200119CB2 /* WelcomeUserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeUserLoginViewController.swift; sourceTree = "<group>"; };
 		A7A42DCD22E014F500E0A595 /* VITbusTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VITbusTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7A42DD022E014F500E0A595 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7A42DD422E014F500E0A595 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				A7A42DE822E0179000E0A595 /* LoginViewController.swift */,
 				A7A42DEC22E02ED900E0A595 /* BusNumberSelectViewController.swift */,
 				A7A42DEE22E07BAF00E0A595 /* MapViewController.swift */,
+				A74C4D7E22E5FFC200119CB2 /* WelcomeUserLoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				A7A42DE922E0179000E0A595 /* LoginViewController.swift in Sources */,
 				A7A42DD522E014F500E0A595 /* ViewController.swift in Sources */,
 				A7A42DEF22E07BAF00E0A595 /* MapViewController.swift in Sources */,
+				A74C4D7F22E5FFC200119CB2 /* WelcomeUserLoginViewController.swift in Sources */,
 				A7A42DD122E014F500E0A595 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
